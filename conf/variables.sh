@@ -6,7 +6,7 @@ DEFAULT_MPP=0.5
 CANCER_TYPE=quip
 MONGODB_HOST=quip4.bmi.stonybrook.edu
 MONGODB_PORT=27017
-HEATMAP_VERSION=cancer-prad
+HEATMAP_VERSION=cancer-paad
 
 # Base directory
 BASE_DIR=/data10/shared/hanle/prediction_cancer_prad_sample
