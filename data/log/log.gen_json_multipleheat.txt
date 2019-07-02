@@ -1,0 +1,12 @@
+Cancer type  quip
+Mongodb host  quip3.bmi.stonybrook.edu
+Mongodb port  27017
+Casename  N22034he_cropped-multires
+Doing /data10/shared/hanle/prediction_cancer_prad_sample/data/svs/N22034he_cropped-multires.tif
+Loaded caseid and subjectid  N22034he_cropped-multires N22034he_cropped-multir
+Cancer type  quip
+Mongodb host  quip3.bmi.stonybrook.edu
+Mongodb port  27017
+Casename  N22034he_cropped-multires
+Doing /data10/shared/hanle/prediction_cancer_prad_sample/data/svs/N22034he_cropped-multires.tif
+Loaded caseid and subjectid  N22034he_cropped-multires N22034he_cropped-multir

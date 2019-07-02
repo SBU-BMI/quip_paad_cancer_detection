@@ -1,0 +1,1 @@
+color_stats.sh: line 22: LINE_N % MAX_PARAL: division by 0 (error token is "MAX_PARAL")
