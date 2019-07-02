@@ -2,7 +2,7 @@
 
 FOLDER=${1}     #/data/patches
 
-PRED_VERSION=patch-level-prad.txt
+PRED_VERSION=patch-level-paad.txt
 
 DIS_FOLDER=./patch-level-lym/
 for files in ${FOLDER}/*/${PRED_VERSION}; do
