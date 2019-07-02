@@ -1,4 +1,4 @@
-# Prad cancer detection pipeline
+# Pancreas cancer (PAAD) detection pipeline
 
 This software implements the pipeline for the Pancrease cancer detection project. 
 
