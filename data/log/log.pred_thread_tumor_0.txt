@@ -1,0 +1,30 @@
+/data10/shared/hanle/prediction_cancer_prad_sample/data/patches/N22034he_cropped-multires.tif//patch-level-lym.txt generating
+/home/hanle/anaconda3/envs/py3/lib/python3.6/site-packages/torchvision-0.2.0-py3.6.egg/torchvision/transforms/transforms.py:156: UserWarning: The use of the transforms.Scale transform is deprecated, please use transforms.Resize instead.
+start predicting...
+| Load pretrained at  /data04/shared/hanle/paad_prediction/data/models_cnn/paad_baseline_preact-res34_train_TCGA_ensemble_epoch_7_auc_0.8595125864960883...
+previous best AUC: 0.8595 at epoch: 7
+=============================================
+Processed:  100
+Processed: 22/91 	 Time Remaining: 0.2749955101446672mins
+size of output:  (102,)
+Processed:  200
+Processed:  300
+Processed: 36/91 	 Time Remaining: 0.23000084305251084mins
+size of output:  (97,)
+Processed:  400
+Processed: 50/91 	 Time Remaining: 0.15174604296684266mins
+size of output:  (96,)
+Processed:  500
+Processed: 62/91 	 Time Remaining: 0.10216540207145035mins
+size of output:  (100,)
+Processed:  600
+Processed: 77/91 	 Time Remaining: 0.046343280329848795mins
+size of output:  (102,)
+Processed:  700
+Processed: 91/91 	 Time Remaining: 0.0mins
+size of output:  (43,)
+len of all coor:  (725, 2)
+shape of Or:  (540, 1)
+shape of inds:  (540,)
+Elapsed Time:  0.3536952296892802
+DONE!
