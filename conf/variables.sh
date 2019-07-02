@@ -6,7 +6,7 @@ DEFAULT_MPP=0.5
 CANCER_TYPE=quip
 MONGODB_HOST=quip4.bmi.stonybrook.edu
 MONGODB_PORT=27017
-HEATMAP_VERSION=cancer-paad
+HEATMAP_VERSION=cancer-prad
 
 # Base directory
 BASE_DIR=/data10/shared/hanle/prediction_cancer_prad_sample
@@ -47,23 +47,11 @@ NEC_CNN_TRAINING_DATA=${BASE_DIR}/data/training_data_cnn
 NEC_CNN_TRAINING_DEVICE=gpu1
 NEC_CNN_PRED_DEVICE=gpu0
 
-# Load modules
-#module purge
-#module load matlab
-#module load mongodb/3.2.0
-#module load jdk8/1.8.0_11
-#module load openslide/3.4.0
-#module load extlibs/1.0.0
-#module load ITK/4.6.1
-#module load cuda75
-#module load anaconda2/4.4.0
-#module load imagemagick/7.0.7
-#module load R/3.4.0
-#export PATH=/home/lehhou/git/bin/:${PATH}
-#export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/cm/shared/apps/anaconda2/current/lib/"
-#export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/cm/shared/apps/cuda75/toolkit/7.5.18/lib64/"
-#export CUDA_HOME=/cm/shared/apps/cuda75
-#export LIBTIFF_CFLAGS="-I/cm/shared/apps/extlibs/include" 
-#export LIBTIFF_LIBS="-L/cm/shared/apps/extlibs/lib -ltiff" 
-#source ~/theano/bin/activate
-#source activate /home/hanle/anaconda3/envs/py3
+if [[ -z "${CUDA_VISIBLE_DEVICES}" ]]; then
+	LYM_CNN_TRAINING_DEVICE=0
+	LYM_CNN_PRED_DEVICE=0
+else
+	LYM_CNN_TRAINING_DEVICE=${CUDA_VISIBLE_DEVICES}
+	LYM_CNN_PRED_DEVICE=${CUDA_VISIBLE_DEVICES}
+fi
+
