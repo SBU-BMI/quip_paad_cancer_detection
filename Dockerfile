@@ -21,7 +21,6 @@ RUN   pip install torchvision==0.2.1 && \
 WORKDIR /root
 ENV	PATH="./":$PATH
 
-ADD https://github.com/immune-health/quip_paad_cancer_detection/git/refs/heads/master version.json
 RUN	git clone https://github.com/immune-health/quip_paad_cancer_detection
 
 RUN   mkdir -p /root/quip_paad_cancer_detection/data/models_cnn

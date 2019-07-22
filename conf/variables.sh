@@ -9,7 +9,7 @@ MONGODB_PORT=27017
 HEATMAP_VERSION=cancer-prad
 
 # Base directory
-BASE_DIR=/data10/shared/hanle/prediction_cancer_prad_sample
+BASE_DIR=/root/quip_paad_cancer_detection
 
 # The list of case_ids you want to download heaetmaps from
 CASE_LIST=${BASE_DIR}/data/raw_marking_to_download_case_list/case_list.txt

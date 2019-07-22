@@ -1,1 +1,0 @@
-/data10/shared/hanle/prediction_cancer_prad_sample/data/patches/N22034he_cropped-multires.tif//patch-level-color.txt generating
