@@ -22,10 +22,11 @@ WORKDIR /root
 ENV	PATH="./":$PATH
 
 ARG   CACHEBUST=1
-RUN   cd /root/ && git clone https://github.com/immune-health/quip_paad_cancer_detection
+RUN   cd /root/ && \
+				git clone https://github.com/immune-health/quip_paad_cancer_detection
 RUN   mkdir -p /root/quip_paad_cancer_detection/data/models_cnn
-RUN		cd /root/quip_paad_cancer_detection/data/models_cnn
-RUN		aria2c -x 16 -j 128 -s 64 --auto-file-renaming=false --file-allocation=falloc \
+RUN		cd /root/quip_paad_cancer_detection/data/models_cnn && \
+				aria2c -x 16 -j 128 -s 64 --allow-overwrite=true --auto-file-renaming=false --file-allocation=falloc \
 "https://get.rech.io/paad_baseline_preact-res34_train_TCGA_ensemble_epoch_7_auc_0.8595125864960883"
 
 CMD ["/bin/bash"]
