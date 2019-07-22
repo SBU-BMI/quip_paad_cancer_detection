@@ -198,7 +198,10 @@ def auc_roc(Pr, Tr):
 print('start predicting...')
 start = time.time()
 
-old_model = os.environ.get('MODEL')
+model_dir = "/root/quip_paad_cancer_detection/data/models_cnn/"
+model_base = os.environ.get('MODEL')
+old_model = model_dir + model_base
+
 print("| Load pretrained at  %s..." % old_model)
 
 checkpoint = torch.load(old_model)

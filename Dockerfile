@@ -16,7 +16,7 @@ RUN   conda install --yes scikit-learn
 RUN   conda install --yes -c conda-forge opencv
 RUN   conda install --yes pytorch=0.4.1 cuda90 -c pytorch
 RUN   pip install torchvision==0.2.1 && \
-      pip install torch==0.4.1
+      pip install torch==0.4.1.post2
 
 WORKDIR /root
 ENV	PATH="./":$PATH
