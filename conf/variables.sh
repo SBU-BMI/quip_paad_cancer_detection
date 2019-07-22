@@ -4,17 +4,12 @@
 DEFAULT_OBJ=20
 DEFAULT_MPP=0.5
 CANCER_TYPE=quip
-MONGODB_HOST=quip4.bmi.stonybrook.edu
+MONGODB_HOST=no.upload
 MONGODB_PORT=27017
 HEATMAP_VERSION=cancer-prad
 
 # Base directory
 BASE_DIR=/data10/shared/hanle/prediction_cancer_prad_sample
-
-# The username you want to download heatmaps from
-#USERNAME=olcabasturk@gmail.com
-USERNAME=praitayini.kanakaraj@stonybrook.edu
-USERNAME=ledinhhan2812@gmail.com
 
 # The list of case_ids you want to download heaetmaps from
 CASE_LIST=${BASE_DIR}/data/raw_marking_to_download_case_list/case_list.txt
