@@ -10,16 +10,16 @@ RUN   apt-get --yes install libgl1-mesa-glx libgl1-mesa-dev
 RUN   apt-get install --yes python3-openslide tar vim curl
 RUN   pip install --upgrade pip
 RUN   pip install conda Pillow pymongo
-
 RUN   pip install openslide-python
 RUN   conda update -n base -c defaults conda
 RUN   conda install --yes scikit-learn
-RUN   conda install --yes -c conda-forge opencv &&
+RUN   conda install --yes -c conda-forge opencv
 RUN   conda install --yes pytorch=0.4.1 cuda90 -c pytorch
 RUN   pip install torchvision==0.2.1 && \
       pip install torch==0.4.1
 
 WORKDIR /root
+ENV	PATH="./":$PATH
 
 ADD https://github.com/immune-health/quip_paad_cancer_detection/git/refs/heads/master version.json
 RUN	git clone https://github.com/immune-health/quip_paad_cancer_detection
