@@ -2,6 +2,10 @@
 
 This software implements the pipeline for the Pancrease cancer detection project. The repo contains the training data, codes for training CNN models to detect Pancreatic cancer in Whole Slide Images. The paper was publised in MICCAI 2019 "Pancreatic Cancer Detection in Whole Slide Images Using Noisy Label Annotations"
 
+## Data:
+### Output heatmaps: *.png files, pixel's value is the predicted probablity of the patch to contain cancerous cells. Download output heatmaps [here](https://drive.google.com/drive/folders/14z84TUy6R_UEEAdbXXOWNPzT0e2NKkOJ?usp=sharing).
+
+
 ## Citation:
     @inproceedings{le2019paad,
       title={Pancreatic Cancer Detection in Whole Slide Images Using Noisy Label Annotations},
