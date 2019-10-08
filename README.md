@@ -1,6 +1,17 @@
 # Pancreas cancer (PAAD) detection pipeline
 
-This software implements the pipeline for the Pancrease cancer detection project. 
+This software implements the pipeline for the Pancrease cancer detection project. The repo contains the training data, codes for training CNN models to detect Pancreatic cancer in Whole Slide Images. The paper was publised in MICCAI 2019 "Pancreatic Cancer Detection in Whole Slide Images Using Noisy Label Annotations"
+
+Citation:
+@inproceedings{le2019paad,
+  title={Pancreatic Cancer Detection in Whole Slide Images Using Noisy Label Annotations},
+  author={Han, Le and Dimitris, Samaras and Tahsin, Kurc and Rajarsi, Gupta and Kenneth, Shroyer and Joel, Saltz },
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  year={2019},
+  organization={Springer}
+}
+
+
 
 # Dependencies
 
