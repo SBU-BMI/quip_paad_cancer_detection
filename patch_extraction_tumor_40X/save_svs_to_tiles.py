@@ -35,9 +35,15 @@ try:
     elif "XResolution" in oslide.properties:
         mag = 10.0 / float(oslide.properties["XResolution"]);
     elif 'tiff.XResolution' in oslide.properties:   # for Multiplex IHC WSIs, .tiff images
-        mag = 10.0 / float(oslide.properties["tiff.XResolution"]);
+        Xres = float(oslide.properties["tiff.XResolution"])
+        if Xres < 10:
+            mag = 10.0 / Xres;
+        else:
+            mag = 10.0 / (10000/Xres)       # SEER PRAD
     else:
         mag = 10.0 / float(0.254);
+        print('[WARNING] mpp value not found. Assuming it is 40X with mpp=0.254!', slide_name);
+        
     print('mag: ', mag)
     pw = int(patch_size_5X * mag / 6.6666667);
     width = oslide.dimensions[0];
