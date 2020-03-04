@@ -16,7 +16,7 @@ output_folder = sys.argv[3] + '/' + sys.argv[1];
 patch_size_5X = 1050;
 level = 1
 
-#start = time.time()
+start = time.time()
 #time.sleep(random.randint(100, 1000)/100.0)  # wait for 1 --> 10s to avoid concurrency
 
 fdone = '{}/extraction_done.txt'.format(output_folder);
