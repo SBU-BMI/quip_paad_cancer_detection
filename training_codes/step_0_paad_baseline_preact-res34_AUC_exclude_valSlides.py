@@ -27,7 +27,7 @@ import collections
 from sklearn.metrics import mean_squared_error, accuracy_score, hamming_loss, roc_curve, auc, f1_score
 
 parser = argparse.ArgumentParser(description='noisy CIFAR-10 training:')
-parser.add_argument('--batch_size', type=int, default=256,
+parser.add_argument('--batch_size', type=int, default=100,
                     help='Number of images in each mini-batch')
 parser.add_argument('--lr', type=float, default=0.001,
                     help='Learning rate for SGD')
@@ -202,7 +202,7 @@ def to_var(x, requires_grad=True):
 
 
 def build_model(num_class=num_class):
-    net = PreActResNet34(num_class - 1)
+    net = PreActResNet18(num_class - 1)
     if torch.cuda.is_available():
         net.cuda()
         torch.backends.cudnn.benchmark = True

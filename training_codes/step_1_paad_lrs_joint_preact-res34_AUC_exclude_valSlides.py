@@ -26,7 +26,7 @@ import collections
 from sklearn.metrics import mean_squared_error, accuracy_score, hamming_loss, roc_curve, auc, f1_score
 
 parser = argparse.ArgumentParser(description='noisy Cancer segmentation training:')
-parser.add_argument('--batch_size', type=int, default=100,
+parser.add_argument('--batch_size', type=int, default=64,
                     help='Number of images in each mini-batch')
 parser.add_argument('--lr', type=float, default=0.001,
                     help='Learning rate for SGD')
@@ -165,8 +165,9 @@ def load_fns(file_list, parent):
 
 model_save = 'paad_lrs_preact-res34_60wsi_exclude_valSlides_5pos_5negs_balanced_hard'
 
-train_parent = 'tumor_data_2400_40X/tumor_2400_40X_selected_1'
+# train_parent = 'tumor_data_2400_40X/tumor_2400_40X_selected_1'
 # val_parent = 'tumor_data_2400_40X/val_test_data'
+train_parent = '/data01/shared/hanle/tumor_project/paad_detection/tumor_data_2400_40X/tumor_2400_40X_selected_1'
 
 val_clean = load_fns('clean_val_list_hard.txt', train_parent)
 test_list = load_fns('test_single_hard.txt', train_parent)
