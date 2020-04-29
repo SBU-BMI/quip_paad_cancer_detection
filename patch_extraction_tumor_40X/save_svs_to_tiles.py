@@ -77,7 +77,6 @@ for x in range(1, width, pw):
             corrs.append((x, y, pw_x, pw_y))
 
 def extract_patch(corr):
-    global level, scale_down
     x, y, pw_x, pw_y = corr
     try:
         patch = oslide.read_region((x, y), level, (int(pw_x/scale_down), int(pw_y/scale_down)));
