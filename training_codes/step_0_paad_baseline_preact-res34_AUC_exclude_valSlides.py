@@ -49,7 +49,7 @@ parser.add_argument('--seed', type=int, default=123987,
                     help='Random Seed')
 parser.add_argument('--note', default='',
                     help='note to job')
-parser.add_argument('--gpu', type=int, default=6,
+parser.add_argument('--gpu', type=int, default=0,
                     help='gpu id')
 args = parser.parse_args()
 if args.seed is not None:
@@ -171,8 +171,9 @@ model_save = 'paad_baseline_preact-res34_60wsi_exclude_valSlides_5pos_5negs_bala
 
 # train_parent = 'tumor_data_2400_40X/tumor_2400_40X_selected_1'
 # val_parent = 'tumor_data_2400_40X/val_test_data'
-train_parent = '/gpfs/scratch/hdle/paad_classification/tumor_data_2400_40X/tumor_2400_40X_selected_1'
+# train_parent = '/gpfs/scratch/hdle/paad_classification/tumor_data_2400_40X/tumor_2400_40X_selected_1'
 
+train_parent = '/data01/shared/hanle/tumor_project/paad_detection/tumor_data_2400_40X/tumor_2400_40X_selected_1'
 
 val_clean = load_fns('clean_val_list_hard.txt', train_parent)
 test_list = load_fns('test_single_hard.txt', train_parent)
