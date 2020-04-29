@@ -10,6 +10,8 @@ import sys
 import cv2
 import multiprocessing as mp
 import random
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 slide_name = sys.argv[2] + '/' + sys.argv[1];
 output_folder = sys.argv[3] + '/' + sys.argv[1];
@@ -44,7 +46,7 @@ try:
     else:
         mag = 10.0 / float(0.254);
         print('[WARNING] mpp value not found. Assuming it is 40X with mpp=0.254!', slide_name);
-        
+
     print('mag: ', mag)
     pw = int(patch_size_5X * mag / 6.6666667);
     width = oslide.dimensions[0];
@@ -75,12 +77,21 @@ for x in range(1, width, pw):
             corrs.append((x, y, pw_x, pw_y))
 
 def extract_patch(corr):
+    global level, scale_down
     x, y, pw_x, pw_y = corr
+    try:
+        patch = oslide.read_region((x, y), level, (int(pw_x/scale_down), int(pw_y/scale_down)));
+    except Exception as e:
+        level = 0   # error reading from level 1, try to read from level 0
+        scale_down = oslide.level_downsamples[level]
+        patch = oslide.read_region((x, y), level, (int(pw_x/scale_down), int(pw_y/scale_down)));
+        print(corr)
+        print(e)
 
-    patch = oslide.read_region((x, y), level, (int(pw_x/scale_down), int(pw_y/scale_down)));
     patch = patch.resize((int(patch_size_5X * pw_x / pw), int(patch_size_5X * pw_y / pw)), Image.ANTIALIAS);
     fname = '{}/{}_{}_{}_{}.png'.format(output_folder, x, y, pw, patch_size_5X);
     patch.save(fname);
+
 
 
 print(slide_name, len(corrs))
