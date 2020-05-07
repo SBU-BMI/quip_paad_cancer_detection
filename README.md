@@ -6,17 +6,6 @@ This software implements the pipeline for the Pancrease cancer detection project
 + Output heatmaps: *.png files, pixel's value is the predicted probablity of the patch to contain cancerous cells. Download output heatmaps [here](https://drive.google.com/drive/folders/14z84TUy6R_UEEAdbXXOWNPzT0e2NKkOJ?usp=sharing).
 
 
-## Citation:
-    @inproceedings{le2019paad,
-      title={Pancreatic Cancer Detection in Whole Slide Images Using Noisy Label Annotations},
-      author={Han, Le and Dimitris, Samaras and Tahsin, Kurc and Rajarsi, Gupta and Kenneth, Shroyer and Joel, Saltz },
-      booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
-      year={2019},
-      organization={Springer}
-    }
-
-
-
 # Dependencies
 
  - [Pytorch 0.4.0](http://pytorch.org/)
@@ -42,7 +31,14 @@ This software implements the pipeline for the Pancrease cancer detection project
 
 - prediction/: CNN prediction code. 
 
-- training/: CNN training code. 
+- training_codes/: CNN training code. 
+
+## Training
+- Go to folder "training_codes", run python paad_baseline_preact-res34_AUC_exclude_valSlides.py
+
+## WSIs prediction
+- Go to folder "scripts", run bash svs_2_heatmap.sh
+
 
 # Docker Instructions 
 
@@ -69,3 +65,15 @@ CUDA_VISIBLE_DEVICES -- set to select the GPU to use
 The following example runs the cancer detection pipeline. It will process images in /home/user/data/svs and output the results to /home/user/data. 
 
 nvidia-docker run --name cancer_prediction_pipeline -itd -v /home/user/data:/data -e CUDA_VISIBLE_DEVICES='0' cancer_prediction svs_2_heatmap.sh
+
+
+## Citation:
+    @inproceedings{le2019paad,
+      title={Pancreatic Cancer Detection in Whole Slide Images Using Noisy Label Annotations},
+      author={Han, Le and Dimitris, Samaras and Tahsin, Kurc and Rajarsi, Gupta and Kenneth, Shroyer and Joel, Saltz },
+      booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+      year={2019},
+      organization={Springer}
+    }
+
+
