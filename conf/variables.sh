@@ -9,8 +9,7 @@ MONGODB_PORT=27017
 HEATMAP_VERSION=cancer-paad
 
 # Base directory
-# BASE_DIR=/data02/shared/hanle/quip_paad_cancer_detection_seer_one_image
-BASE_DIR="$(dirname "$PWD")"        # auto detect base directory
+BASE_DIR=/data02/shared/hanle/quip_paad_cancer_detection
 
 # The username you want to download heatmaps from
 #USERNAME=olcabasturk@gmail.com

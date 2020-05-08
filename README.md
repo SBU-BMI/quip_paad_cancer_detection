@@ -33,6 +33,9 @@ This software implements the pipeline for the Pancrease cancer detection project
 
 - training_codes/: CNN training code. 
 
+## Setup conf/variables.sh
+- Change the BASE_DIR to the path of your folder after you clone the git repo
+
 ## Training
 - Go to folder "training_codes", run python paad_baseline_preact-res34_AUC_exclude_valSlides.py
 
