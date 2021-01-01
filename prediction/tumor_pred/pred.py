@@ -193,22 +193,15 @@ def auc_roc(Pr, Tr):
     fpr, tpr, _ = roc_curve(Tr, Pr, pos_label=1.0);
     return auc(fpr, tpr);
 
-
 # load model
 print('start predicting...')
 start = time.time()
 
-#old_model = '/data04/shared/hanle/paad_prediction/data/models_cnn/paad_lrs_preact-res34_2pos_5negs_60wsi_exclude_valSlides_hard_epoch_91_acc_78.94117647058823'
+base_dir = os.environ.get('BASE_DIR')
+if base_dir is None:
+   base_dir = "../.." 
 
-#old_model = '/data04/shared/hanle/paad_prediction/data/models_cnn/paad_baseline_preact-res34_60wsi_exclude_valSlides_2pos_5neg_hard_epoch_149_acc_71.17647058823529'
-
-#old_model = '/data04/shared/hanle/paad_prediction/data/models_cnn/paad_lrs_preact-res34_2pos_5negs_60wsi_exclude_valSlides_hard_epoch_149_acc_77.32352941176471'
-
-#old_model = '/data04/shared/hanle/paad_prediction/data/models_cnn/paad_baseline_preact-res34_60wsi_exclude_valSlides_2pos_5neg_hard_epoch_100_acc_71.44117647058823'
-
-#old_model = '/data04/shared/hanle/paad_prediction/data/models_cnn/paad_baseline_preact-res34_60wsi_exclude_valSlides_balanced_hard_epoch_149_acc_70.76470588235294'
-
-old_model = '../../data/models_cnn/paad_baseline_preact-res34_train_TCGA_ensemble_epoch_7_auc_0.8595125864960883'
+old_model = str(base_dir)+'/models_cnn/paad_baseline_preact-res34_train_TCGA_ensemble_epoch_7_auc_0.8595125864960883'
 
 print("| Load pretrained at  %s..." % old_model)
 

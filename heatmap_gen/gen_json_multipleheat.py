@@ -26,7 +26,7 @@ start_id_multiheat = 4; # additional input starts from 4th
 # Load configs from ../conf/variables.sh
 mongo_host = 'localhost';
 mongo_port = 27017;
-cancer_type = 'quip';
+cancer_type = 'paad';
 lines = [line.rstrip('\n') for line in open('../conf/variables.sh')];
 for config_line in lines:
     if (config_line.startswith('MONGODB_HOST=')):
@@ -67,27 +67,19 @@ if not os.path.isfile(imgfilename):
     sys.exit(0);
 print("Doing {}".format(imgfilename));
 
-
-# Retrieve case_id and subject_id from mongodb
-# Read mongodb port
-
-#mongo_client = MongoClient(mongo_host, mongo_port);
-#db = mongo_client[cancer_type].images;
-#query_filename = imgfilename;
-#db_result = db.find_one({"filename":query_filename});
-#caseid = db_result['case_id'];
-#subjectid = db_result['subject_id'];
 caseid = casename;
 subjectid = casename[:-2];
 
+out_dir = os.environ.get('OUT_DIR')
+if out_dir is None:
+   out_dir = "../data/output" 
 
-heatmapfile = './json/heatmap_' + filename.split('prediction-')[1] + '.json';
-metafile = './json/meta_' + filename.split('prediction-')[1] + '.json';
+heatmapfile = str(out_dir)+'/json/heatmap_' + filename.split('prediction-')[1] + '.json';
+metafile = str(out_dir)+'/json/meta_' + filename.split('prediction-')[1] + '.json';
 
 oslide = openslide.OpenSlide(imgfilename);
 slide_width_openslide = oslide.dimensions[0];
 slide_height_openslide = oslide.dimensions[1];
-
 
 print("Loaded caseid and subjectid ", caseid, subjectid);
 
@@ -137,7 +129,6 @@ dict_analysis['study_id'] = slide_type;
 dict_analysis['execution_id'] = heatmap_name;
 dict_analysis['source'] = 'computer';
 dict_analysis['computation'] = 'heatmap';
-
 
 if (is_shifted == True):
     shifted_x = -3*patch_width / 4.0;
