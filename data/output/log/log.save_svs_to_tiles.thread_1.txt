@@ -1,5 +1,0 @@
-extracting /data10/shared/hanle/prediction_cancer_prad_sample/data/patches/N22034he_cropped-multires.tif
-mag:  39.37007751061136
-slide/width/height/scale_down/pw:  /data10/shared/hanle/prediction_cancer_prad_sample/data/svs/N22034he_cropped-multires.tif 60427 53298 2.0000165491675768 6200
-/data10/shared/hanle/prediction_cancer_prad_sample/data/svs/N22034he_cropped-multires.tif 90
-Elapsed time:  3.128761374950409
