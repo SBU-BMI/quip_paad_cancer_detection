@@ -26,7 +26,7 @@ while [ 1 ]; do
         if [ -f ${files}/${DONE_FILE} ]; then
             if [ ! -f ${files}/${DATA_FILE} ]; then
                 echo ${files}/${DATA_FILE} generating
-                CUDA_VISIBLE_DEVICES=${LYM_CNN_PRED_DEVICE} python -u ${EXEC_FILE} ${files} ${LYM_NECRO_CNN_MODEL_PATH} ${DATA_FILE}
+                CUDA_VISIBLE_DEVICES=${LYM_CNN_PRED_DEVICE} python -u ${EXEC_FILE} ${files} ${LYM_NECRO_CNN_MODEL_PATH} ${DATA_FILE} ${LYM_NECRO_CNN_MODEL_PATH}/${MODEL}
             fi
         fi
     done

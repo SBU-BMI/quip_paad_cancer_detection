@@ -32,6 +32,7 @@ TileFolder = sys.argv[1] + '/';
 BatchSize = 96;
 
 heat_map_out = sys.argv[3];
+old_model = sys.argv[4];
 
 mu = [0.7238, 0.5716, 0.6779]
 sigma = [0.1120, 0.1459, 0.1089]
@@ -196,12 +197,6 @@ def auc_roc(Pr, Tr):
 # load model
 print('start predicting...')
 start = time.time()
-
-base_dir = os.environ.get('BASE_DIR')
-if base_dir is None:
-   base_dir = "../.." 
-
-old_model = str(base_dir)+'/models_cnn/paad_baseline_preact-res34_train_TCGA_ensemble_epoch_7_auc_0.8595125864960883'
 
 print("| Load pretrained at  %s..." % old_model)
 
