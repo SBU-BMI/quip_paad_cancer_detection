@@ -2,7 +2,7 @@ BootStrap: docker
 From: pytorch/pytorch:1.0.1-cuda10.0-cudnn7-devel 
 
 %files
-	../* /root/quip_paad_cancer_detection/
+	../* /quip_app/quip_paad_cancer_detection/
 
 %post
 	apt-get -y update 
@@ -18,10 +18,11 @@ From: pytorch/pytorch:1.0.1-cuda10.0-cudnn7-devel
 	pip install torchvision==0.2.1 
 	conda install --yes -c conda-forge opencv
 	pip install openslide-python
-	chmod 0755 /root/quip_paad_cancer_detection/scripts/*
+	chmod -R 0755 /quip_app
+	chmod 0755 /quip_app/quip_paad_cancer_detection/scripts/*
 
 %environment
-	export BASE_DIR="/root/quip_paad_cancer_detection"
+	export BASE_DIR="/quip_app/quip_paad_cancer_detection"
 	export PATH="/opt/conda/bin:/usr/local/bin:./":$PATH
 
 %runscript

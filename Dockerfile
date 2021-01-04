@@ -15,7 +15,7 @@ RUN	apt-get -y update && \
 
 RUN	pip install openslide-python
 
-ENV 	BASE_DIR="/root/quip_paad_cancer_detection"
+ENV 	BASE_DIR="/quip_app/quip_paad_cancer_detection"
 ENV 	PATH="./":$PATH
 
 COPY    . ${BASE_DIR}/.
