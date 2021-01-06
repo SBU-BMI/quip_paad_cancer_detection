@@ -1,9 +1,9 @@
 # Pancreas cancer (PAAD) detection pipeline
 
-This software implements the pipeline for the Pancrease cancer detection project. The repo contains codes to perform the prediction to detect Pancreatic cancer in Whole Slide Images. The paper was publised in MICCAI 2019 "Pancreatic Cancer Detection in Whole Slide Images Using Noisy Label Annotations"
+This software implements the pipeline for the Pancreas cancer detection project. The repo contains codes to perform the prediction to detect Pancreatic cancer in Whole Slide Images. The paper was published in MICCAI 2019 "Pancreatic Cancer Detection in Whole Slide Images Using Noisy Label Annotations"
 
 ## TCGA Data:
-+ Output heatmaps: *.png files, pixel's value is the predicted probablity of the patch to contain cancerous cells. Download output heatmaps [here](https://drive.google.com/drive/folders/14z84TUy6R_UEEAdbXXOWNPzT0e2NKkOJ?usp=sharing).
++ Output heatmaps: *.png files, pixel's value is the predicted probability of the patch to contain cancerous cells. Download output heatmaps [here](https://drive.google.com/drive/folders/14z84TUy6R_UEEAdbXXOWNPzT0e2NKkOJ?usp=sharing).
 
 
 # Dependencies
@@ -50,7 +50,7 @@ Build the docker image by:
 docker build -t cancer_prediction .  (Note the dot at the end). 
 
 ## Step 1:
-Create folder named "data" and subfoders below on the host machine:
+Create folder named "data" and subfolders below on the host machine:
 
 - data/svs: to contains *.svs files
 - data/patches: to contain output from patch extraction
