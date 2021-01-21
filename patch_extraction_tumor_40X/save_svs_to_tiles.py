@@ -79,14 +79,12 @@ for x in range(1, width, pw):
 def extract_patch(corr):
     global level, scale_down
     x, y, pw_x, pw_y = corr
-    try:
-        patch = oslide.read_region((x, y), level, (int(pw_x/scale_down), int(pw_y/scale_down)));
-    except Exception as e:
-        level = 0   # error reading from level 1, try to read from level 0
-        scale_down = oslide.level_downsamples[level]
-        patch = oslide.read_region((x, y), level, (int(pw_x/scale_down), int(pw_y/scale_down)));
-        print(corr)
-        print(e)
+
+    level = 0 
+    scale_down = oslide.level_downsamples[level]
+    patch = oslide.read_region((x, y), level, (int(pw_x/scale_down), int(pw_y/scale_down)));
+    print(corr)
+    print(e)
 
     patch = patch.resize((int(patch_size_5X * pw_x / pw), int(patch_size_5X * pw_y / pw)), Image.ANTIALIAS);
     fname = '{}/{}_{}_{}_{}.png'.format(output_folder, x, y, pw, patch_size_5X);
