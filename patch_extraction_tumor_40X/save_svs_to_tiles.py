@@ -16,7 +16,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 slide_name = sys.argv[2] + '/' + sys.argv[1];
 output_folder = sys.argv[3] + '/' + sys.argv[1];
 patch_size_5X = 1050;
-level = 1
+# level = 1
 
 start = time.time()
 #time.sleep(random.randint(100, 1000)/100.0)  # wait for 1 --> 10s to avoid concurrency
@@ -51,7 +51,7 @@ try:
     pw = int(patch_size_5X * mag / 6.6666667);
     width = oslide.dimensions[0];
     height = oslide.dimensions[1];
-    scale_down = oslide.level_downsamples[level]
+    # scale_down = oslide.level_downsamples[level]
 except:
     print('{}: exception caught'.format(slide_name));
     exit(1);
@@ -77,7 +77,6 @@ for x in range(1, width, pw):
             corrs.append((x, y, pw_x, pw_y))
 
 def extract_patch(corr):
-    global level, scale_down
     x, y, pw_x, pw_y = corr
 
     level = 0 
