@@ -28,7 +28,7 @@ export LYM_NECRO_CNN_MODEL_PATH=${BASE_DIR}/models_cnn
 export MODEL="paad_baseline_preact-res34_train_TCGA_ensemble_epoch_7_auc_0.8595125864960883"
 
 # Training folders
-# The list of case_ids you want to download heaetmaps from
+# The list of case_ids you want to download heatmaps from
 export CASE_LIST=${DATA_DIR}/raw_marking_to_download_case_list/case_list.txt
 export PATCH_SAMPLING_LIST_PATH=${DATA_DIR}/patch_sample_list
 export RAW_MARKINGS_PATH=${DATA_DIR}/raw_marking_xy
