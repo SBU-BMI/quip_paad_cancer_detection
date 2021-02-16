@@ -47,7 +47,7 @@ This software implements the pipeline for the Pancreas cancer detection project.
 
 Build the docker image by: 
 
-`docker build -t paad_cancer_detection  .`  (Note the dot at the end). 
+`docker build -t paad_detection  .`  (Note the dot at the end). 
 
 ## Step 1:
 Create folder named "data" and subfolders below on the host machine:
@@ -62,7 +62,7 @@ Create folder named "data" and subfolders below on the host machine:
 - Run the docker container as follows: 
 
 ```
-nvidia-docker run --name paad-cancer-detection -itd -v <path-to-data>:/data -e CUDA_VISIBLE_DEVICES='<cuda device id>' paad_cancer_detection  svs_2_heatmap.sh 
+nvidia-docker run --name paad-detection -itd -v <path-to-data>:/data -e CUDA_VISIBLE_DEVICES='<cuda device id>' paad_detection  svs_2_heatmap.sh 
 ```
 
 CUDA_VISIBLE_DEVICES -- set to select the GPU to use 
@@ -70,7 +70,7 @@ CUDA_VISIBLE_DEVICES -- set to select the GPU to use
 The following example runs the cancer detection pipeline. It will process images in /home/user/data/svs and output the results to /home/user/data. 
 
 ```
-nvidia-docker run --name paad-cancer-detection -itd -v /home/user/data:/data -e CUDA_VISIBLE_DEVICES='0' paad_cancer_detection  svs_2_heatmap.sh
+nvidia-docker run --name paad-detection -itd -v /home/user/data:/data -e CUDA_VISIBLE_DEVICES='0' paad_detection  svs_2_heatmap.sh
 ```
 
 ## Citation:
