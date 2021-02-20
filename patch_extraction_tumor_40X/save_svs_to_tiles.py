@@ -56,7 +56,7 @@ except:
     print('{}: exception caught'.format(slide_name));
     exit(1);
 
-print('slide/width/height/scale_down/pw: ', slide_name, width, height, scale_down, pw)
+print('slide/width/height/pw: ', slide_name, width, height, pw)
 sys.stdout.flush()
 
 corrs = []
@@ -83,7 +83,6 @@ def extract_patch(corr):
     scale_down = oslide.level_downsamples[level]
     patch = oslide.read_region((x, y), level, (int(pw_x/scale_down), int(pw_y/scale_down)));
     print(corr)
-    print(e)
 
     patch = patch.resize((int(patch_size_5X * pw_x / pw), int(patch_size_5X * pw_y / pw)), Image.ANTIALIAS);
     fname = '{}/{}_{}_{}_{}.png'.format(output_folder, x, y, pw, patch_size_5X);
