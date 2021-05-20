@@ -1,27 +1,32 @@
-FROM pytorch/pytorch:1.0.1-cuda10.0-cudnn7-devel 
-MAINTAINER Tahsin Kurc
+FROM continuumio/miniconda3:4.9.2
+LABEL maintainer="Jakub Kaczmarzyk <jakub.kaczmarzyk@stonybrookmedicine.edu>"
 
-RUN	apt-get -y update && \
-	apt-get install --yes python3-openslide wget zip libgl1-mesa-glx libgl1-mesa-dev && \
-	pip install --upgrade pip && \
-	conda update -n base -c defaults conda && \
-	pip3 install setuptools==45 && \
-	pip install cython && \
-	conda install --yes pytorch=0.4.1 cuda90 -c pytorch && \
-	conda install --yes scikit-learn && \
-	pip install "Pillow<7" pymongo pandas && \
-	pip install torchvision==0.2.1 && \
-	conda install --yes -c conda-forge opencv
+RUN	apt-get update \
+	&& apt-get install --yes \
+		gcc \
+		libgl1-mesa-glx \
+		openslide-tools \
+	&& rm -rf /var/lib/apt/lists/*
 
-RUN	pip install openslide-python
+# TODO: this should go in an environment.yml file.
+RUN conda create -n histo --yes --quiet \
+		--channel pytorch \
+		--channel conda-forge \
+			cuda90 \
+			pandas \
+			"pillow<7" \
+			pytorch=0.4.1 \
+			scikit-learn \
+			torchvision==0.2.1 \
+	&& /opt/conda/envs/histo/bin/python -m pip install --no-cache-dir \
+		opencv-python \
+		openslide-python \
+		pymongo
+ENV "/opt/conda/envs/histo/bin:$PATH"
 
-ENV 	BASE_DIR="/quip_app/quip_paad_cancer_detection"
-ENV 	PATH="./":$PATH
-
-COPY    . ${BASE_DIR}/.
-
-RUN     chmod 0755 ${BASE_DIR}/scripts/*
-
-WORKDIR ${BASE_DIR}/scripts
-
+WORKDIR /quip_app/quip_paad_cancer_detection
+COPY . .
+RUN chmod +x scripts/svs_2_heatmap.sh
+ENV PATH="/quip_app/quip_paad_cancer_detection/scripts:$PATH"
+WORKDIR scripts
 CMD ["/bin/bash"]
