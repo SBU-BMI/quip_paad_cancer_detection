@@ -1,22 +1,12 @@
 import os
 import torch
-from torchvision import models, transforms
+from torchvision import transforms
 from PIL import Image
 import numpy as np
-import torch.nn as nn
 from torch.autograd import Variable
-from torch.utils.data import DataLoader, Dataset
 import time
-import argparse
-from torch.optim import lr_scheduler
-import copy
 import torch.nn.parallel
-import torch.optim as optim
-#import data_aug as DA
-from sklearn.metrics import mean_squared_error, accuracy_score, hamming_loss, roc_curve, auc, f1_score
 import sys
-import torch.backends.cudnn as cudnn
-import time
 import torch.nn.functional as F
 
 from model_paad import PreActResNet34
@@ -130,12 +120,6 @@ def load_data(todo_list, rind):
     return todo_list[lind:], X, inds, coor, rind;
 
 
-def from_output_to_pred(output):
-    pred = np.copy(output);
-    pred = (pred >= 0.5).astype(np.int32);
-    return pred;
-
-
 def val_fn_epoch_on_disk(classn, val_fn):
     all_or = np.zeros(shape=(500000, classn), dtype=np.float32);
     all_inds = np.zeros(shape=(500000,), dtype=np.int32);
@@ -183,16 +167,6 @@ def val_fn_epoch_on_disk(classn, val_fn):
     all_coor = all_coor[:n3];
     return all_or, all_inds, all_coor;
 
-def confusion_matrix(Or, Tr, thres):
-    tpos = np.sum((Or>=thres) * (Tr==1));
-    tneg = np.sum((Or< thres) * (Tr==0));
-    fpos = np.sum((Or>=thres) * (Tr==0));
-    fneg = np.sum((Or< thres) * (Tr==1));
-    return tpos, tneg, fpos, fneg;
-
-def auc_roc(Pr, Tr):
-    fpr, tpr, _ = roc_curve(Tr, Pr, pos_label=1.0);
-    return auc(fpr, tpr);
 
 # load model
 print('start predicting...')
