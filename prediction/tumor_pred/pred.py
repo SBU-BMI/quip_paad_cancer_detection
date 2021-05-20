@@ -38,7 +38,7 @@ mu = [0.7238, 0.5716, 0.6779]
 sigma = [0.1120, 0.1459, 0.1089]
 
 
-device = torch.device("cuda")
+device = "cuda" if torch.cuda.is_available() else "cpu"
 data_aug = transforms.Compose([
     transforms.Scale(PS),
     transforms.ToTensor(),
@@ -200,7 +200,7 @@ start = time.time()
 
 print("| Load pretrained at  %s..." % old_model)
 
-checkpoint = torch.load(old_model)
+checkpoint = torch.load(old_model, map_location=device)
 model = PreActResNet34(1)
 model.load_state_dict(checkpoint['net'])
 model.to(device)
