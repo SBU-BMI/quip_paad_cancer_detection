@@ -36,12 +36,8 @@ data_aug = transforms.Compose(
 
 
 def whiteness(png):
-    wh = (
-        np.std(png[:, :, 0].flatten())
-        + np.std(png[:, :, 1].flatten())
-        + np.std(png[:, :, 2].flatten())
-    ) / 3.0
-    return wh
+    """Return the mean standard deviation across channels."""
+    return np.std(png, axis=(0, 1)).mean()
 
 
 def softmax_np(x):
@@ -92,7 +88,7 @@ def load_data(todo_list, rind):
             y_off = float(fn.split("_")[1])
             svs_pw = float(fn.split("_")[2])
             png_pw = float(fn.split("_")[3].split(".png")[0])
-        except:
+        except Exception:
             print("error reading image")
             continue
 
@@ -165,7 +161,7 @@ def val_fn_epoch_on_disk(classn, val_fn):
                 output = val_fn(inputs)
 
             output = F.sigmoid(output)
-            output = output.data.cpu().numpy()    # TODO: the comment below doesn't seem to be correct...
+            output = output.data.cpu().numpy()
 
             print("size of output: ", output.shape)
 
