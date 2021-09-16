@@ -27,6 +27,14 @@ export PATCH_PATH=${DATA_DIR}/patches
 export LYM_NECRO_CNN_MODEL_PATH=${BASE_DIR}/models_cnn
 export MODEL="paad_baseline_preact-res34_train_TCGA_ensemble_epoch_7_auc_0.8595125864960883"
 
+# VERSION INFO
+export MODEL_PATH=$LYM_NECRO_CNN_MODEL_PATH/$MODEL 
+export TUMOR_VERSION=$(git show --oneline -s | cut -f 1 -d ' ')":"$MODEL_VER":"$(sha256sum $MODEL_PATH | cut -c1-7)
+export GIT_REMOTE=$(git remote -v | head -n 1 | cut -f 1 -d ' '| cut -f 2)
+export GIT_BRANCH=$(git branch | grep "\*" | cut -f 2 -d ' ')
+export GIT_COMMIT=$(git show | head -n 1 | cut -f 2 -d ' ')
+export MODEL_HASH=$(sha256sum $MODEL_PATH | cut -f 1 -d ' ')
+
 # Training folders
 # The list of case_ids you want to download heatmaps from
 export CASE_LIST=${DATA_DIR}/raw_marking_to_download_case_list/case_list.txt

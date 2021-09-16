@@ -2,13 +2,13 @@ BootStrap: docker
 From: pytorch/pytorch:1.0.1-cuda10.0-cudnn7-devel 
 
 %files
-	../* /quip_app/quip_paad_cancer_detection/
+	../ /quip_app/quip_paad_cancer_detection/
 
 %post
 	apt-get -y update 
 	apt-get install --yes python3-openslide wget zip libgl1-mesa-glx libgl1-mesa-dev 
 	export PATH="/opt/conda/bin:/usr/local/bin:./":$PATH
-	pip install --upgrade pip 
+	pip install pip==21.0.1 
 	conda update -n base -c defaults conda 
 	pip3 install setuptools==45 
 	pip install cython 
@@ -24,6 +24,8 @@ From: pytorch/pytorch:1.0.1-cuda10.0-cudnn7-devel
 %environment
 	export BASE_DIR="/quip_app/quip_paad_cancer_detection"
 	export PATH="/opt/conda/bin:/usr/local/bin:./":$PATH
+	export MODEL_VER="v1.0"
+	export MODEL_URL="https://github.com/SBU-BMI/quip_paad_cancer_detection/blob/develop/models_cnn/paad_baseline_preact-res34_train_TCGA_ensemble_epoch_7_auc_0.8595125864960883"
 
 %runscript
 	cd ${BASE_DIR}/scripts

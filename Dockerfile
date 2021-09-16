@@ -3,7 +3,7 @@ MAINTAINER Tahsin Kurc
 
 RUN	apt-get -y update && \
 	apt-get install --yes python3-openslide wget zip libgl1-mesa-glx libgl1-mesa-dev && \
-	pip install --upgrade pip && \
+	pip install pip==21.0.1 && \
 	conda update -n base -c defaults conda && \
 	pip3 install setuptools==45 && \
 	pip install cython && \
@@ -17,6 +17,9 @@ RUN	pip install openslide-python
 
 ENV 	BASE_DIR="/quip_app/quip_paad_cancer_detection"
 ENV 	PATH="./":$PATH
+
+ENV	MODEL_VER="v1.0"
+ENV	MODEL_URL="https://github.com/SBU-BMI/quip_paad_cancer_detection/blob/develop/models_cnn/paad_baseline_preact-res34_train_TCGA_ensemble_epoch_7_auc_0.8595125864960883"
 
 COPY    . ${BASE_DIR}/.
 
