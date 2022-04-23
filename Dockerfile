@@ -3,17 +3,15 @@ MAINTAINER Tahsin Kurc
 
 RUN	apt-get -y update && \
 	apt-get install --yes python3-openslide wget zip libgl1-mesa-glx libgl1-mesa-dev && \
-	pip install pip==21.0.1 && \
-	conda update -n base -c defaults conda && \
+	pip install --upgrade pip==21.0.1 && \
 	pip3 install setuptools==45 && \
-	pip install cython && \
+	pip3 install cython && \
 	conda install --yes pytorch=0.4.1 cuda90 -c pytorch && \
-	conda install --yes scikit-learn && \
-	pip install "Pillow<7" pymongo pandas && \
-	pip install torchvision==0.2.1 && \
-	conda install --yes -c conda-forge opencv
-
-RUN	pip install openslide-python
+	pip3 install scikit-learn && \
+	pip3 install "Pillow<7" pymongo pandas && \
+	pip3 install torchvision==0.2.1 && \
+	pip3 install opencv-python && \
+	pip3 install openslide-python
 
 ENV 	BASE_DIR="/quip_app/quip_paad_cancer_detection"
 ENV 	PATH="./":$PATH
