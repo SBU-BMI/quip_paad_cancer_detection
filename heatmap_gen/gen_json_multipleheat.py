@@ -12,6 +12,7 @@ import os
 import openslide
 from bson import json_util
 #from pymongo import MongoClient
+import glob
 
 is_shifted = False;
 
@@ -58,13 +59,25 @@ if 'low_res' not in filename:
     casename = casename.split('.intersected')[0]
 
 print("Casename ", casename);
-imgfilename = svs_img_folder + '/' + casename + '.svs';
-if not os.path.isfile(imgfilename):
-    imgfilename = svs_img_folder + '/' + casename + '.tif';
-if not os.path.isfile(imgfilename):
-    print("{}.svs/tif does not exist".format(svs_img_folder + '/' + casename));
+imgfiles = glob.glob(svs_img_folder+'/'+casename+"*",recursive=True)
+if len(imgfiles)!=1:
+    print("{} has problems:".format(svs_img_folder + '/' + casename));
+    if len(imgfiles)==0:
+        print("  No image files found.")
+    else:
+        for fname in imgfiles: 
+            print("Multiple files: File: {}".format(fname));
     print("Quit");
     sys.exit(0);
+imgfilename = imgfiles[0]
+
+# imgfilename = svs_img_folder + '/' + casename + '.svs';
+# if not os.path.isfile(imgfilename):
+#     imgfilename = svs_img_folder + '/' + casename + '.tif';
+# if not os.path.isfile(imgfilename):
+#     print("{}.svs/tif does not exist".format(svs_img_folder + '/' + casename));
+#     print("Quit");
+#     sys.exit(0);
 print("Doing {}".format(imgfilename));
 
 caseid = casename;
